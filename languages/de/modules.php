@@ -38,4 +38,3 @@ $GLOBALS['TL_LANG']['FMD']['mootoolsnav'] = array('Mootools Navigation', '');
  * Extension folder
  */
 $GLOBALS['TL_LANG']['MOD']['mootoolsnav'] = array('Mootools Navigation', '');
-

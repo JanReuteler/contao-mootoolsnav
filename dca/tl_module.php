@@ -31,5 +31,66 @@
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mootoolsnav'] = '{title_legend},name,headline,type;{nav_legend},levelOffset,showLevel,hardLimit,showProtected;{reference_legend:hide},defineRoot;{template_legend:hide},navigationTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mootoolsnav'] = '{title_legend},name,headline,type;mootoolsnav_config;{nav_legend},levelOffset,showLevel,hardLimit,showProtected;{reference_legend:hide},defineRoot;{template_legend:hide},navigationTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+
+
+	
+/**
+ * Add fields to tl_module
+ */
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['mootoolsnav_config'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_theme']['mootoolsnav'],
+	'exclude' 		=> true,
+	'inputType' 		=> 'multiColumnWizard',
+	'eval' 			=> array
+	(
+		'columnFields' => array
+		(
+			'level' => array
+			(
+				'label'                 => &$GLOBALS['TL_LANG']['tl_module']['navigation_level'],
+				'inputType'             => 'text',
+				'eval' 					=> array('style' => 'width:50px', 'mandatory'=>true, 'rgxp'=>'digit', 'unique'=>true)
+			),
+			
+			'event' => array
+			(
+				'label'                 => &$GLOBALS['TL_LANG']['tl_module']['navigation_event'],
+				'inputType'             => 'select',
+				'options'            	=> array
+				(
+					'mouseover'    	=> 'MouseOver',
+					'click'       	=> 'Klick',
+				),
+				'eval' 				=> array('style' => 'width:250px', 'mandatory'=>true)
+			),
+			
+			'direction' => array
+			(
+				'label'                 => &$GLOBALS['TL_LANG']['tl_module']['navigation_direction'],
+				'inputType'             => 'select',
+				'options'            	=> array
+				(
+					'bottom'     	=> 'Bottom',
+					'right'       => 'Right',
+					'left'     	=> 'Left',
+					'top'     	=> 'Top',
+				),
+				'eval' 			=> array('style' => 'width:200px', 'mandatory'=>true)
+			),
+			
+			'keepopen' => array
+			(		
+					'label'          	=> &$GLOBALS['TL_LANG']['tl_module']['keepopen'],
+					'exclude'        	=> true,
+					'inputType'  		=> 'checkbox',
+					'eval'          	=> array('mandatory'=>true)
+			),
+ 
+			
+		)
+	)
+);
 

@@ -32,3 +32,19 @@
  * Frontend modules
  */
 $GLOBALS['FE_MOD']['navigationMenu']['mootoolsnav'] = 'ModuleMootoolsnav';
+
+
+/**
+ * Back end modules
+ */
+array_insert($GLOBALS['BE_MOD']['modulenavigation'], 1, array
+(
+	'mootoolsnav' => array
+	(
+		'tables'     => array('tl_modules')
+	)
+));
+
+
+
+

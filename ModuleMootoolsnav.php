@@ -30,6 +30,31 @@
 
 class ModuleMootoolsnav extends ModuleNavigation
 {
+	protected $strTemplate = 'mod_mootoolsnav';
 
+	
+	protected function compile()
+	{
+		parent::compile();
+		
+		if ($this->cssID[0] == '')
+		{
+			$arrCssID = $this->cssID;
+			$arrCssID[0] = 'mootoolsnav'.$this->id;
+			$this->cssID = $arrCssID;
+		}
+		
+		
+		$arrConfig = array();
+		
+		foreach(deserialize($this->mootoolsnav_config, true) as $arrRow)
+		{
+			$arrConfig[$arrRow['level']] = $arrRow;
+		}
 
+		$this->Template->mootoolsnav_config = $arrConfig;
+		$this->Template->mootoolsnav_id = $this->cssID[0];
+		
+		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/mootoolsnav/html/mootoolsnav.js';
+	}
 }
